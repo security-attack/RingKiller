@@ -56,19 +56,6 @@ Worth knowing: PPL-protected processes may survive the call. Invalid PIDs fail a
 
 ---
 
-## Files
-
-| File | What it is |
-|------|------------|
-| `ringkiller.c` | PoC source |
-| `ringkiller.exe` | built binary |
-| `ringkiller-banner.png` | project banner |
-| `install_dcrcv_service.bat` | load driver (admin) |
-| `uninstall_dcrcv_service.bat` | unload driver (admin) |
-| `DCRCVDrv.sys` / `*.bin` | driver sample — you supply this |
-
----
-
 ## Running it
 
 You need an admin shell to load the driver. RingKiller itself runs as whatever user can open the device handle.
@@ -157,7 +144,6 @@ typedef struct _RINGKILLER_INPUT {
 
 ## Notes
 
-- No exit-status field on this IOCTL (unlike our Alinubx PoC in the parent repo).
 - Seen in the wild as an EDR-killer primitive — load driver, enumerate AV PIDs, loop `DeviceIoControl`.
 - For defensive work: hunt for `DCRCVDRV_U` service, handle opens to `\\.\DCRCVDRV_U`, and IOCTL `0x2205C0` in telemetry.
 
