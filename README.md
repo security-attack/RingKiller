@@ -4,7 +4,7 @@
 
 # RingKiller
 
-**RingKiller** is a small user-mode PoC that abuses `DCRCVDrv.sys` to terminate a process from kernel context. We built it while reversing the driver for NINJA's BYOD driver research — the same primitive shows up in real campaigns (Cruciferra, ACRStealer, etc.) where attackers load the signed driver and blast security product PIDs with a single IOCTL.
+**RingKiller** is a small user-mode PoC that abuses and vulnerable driver `DCRCVDrv.sys` to terminate a process from kernel context. We built it while reversing the driver for NINJA's BYOD driver research — the same primitive shows up in real campaigns (Cruciferra, ACRStealer, etc.) where attackers load the signed driver and blast security product PIDs with a single IOCTL.
 
 The driver itself is a MOCOMSYS & DCRC product (`DCRCV_U`). It's meant for enterprise VM/desktop control, but IOCTL `0x2205C0` is essentially an unauthenticated kill switch.
 
